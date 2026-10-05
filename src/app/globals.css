@@ -1,0 +1,57 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --background: #F8FAFC;
+  --foreground: #0F172A;
+  --card-bg: #FFFFFF;
+  --border-color: #E2E8F0;
+}
+
+.dark {
+  --background: #0B1020;
+  --foreground: #F8FAFC;
+  --card-bg: #0C1326;
+  --border-color: #1E293B;
+}
+
+html {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-shimmer {
+  background-size: 200% auto;
+  animation: shimmer 4s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
